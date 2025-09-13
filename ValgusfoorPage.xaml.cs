@@ -1,59 +1,49 @@
-using System;
+using Microsoft.Maui.Controls;
 
 namespace _1projekt;
 
 public partial class ValgusfoorPage : ContentPage
 {
-    Label infoLabel;
-	BoxView boxView;
-	VerticalStackLayout vsl;
-	public ValgusfoorPage()
-	{
-        infoLabel = new Label
-        {
-            Text = "punane",
-            FontSize = 30,
-            TextColor = Colors.Black,
-            FontFamily = "premint-Regular",
-            HorizontalOptions = LayoutOptions.Center,
-            VerticalOptions = LayoutOptions.Center
-        };
-        boxView = new BoxView
-		{
-			Color = Colors.Red,
-			WidthRequest = DeviceDisplay.MainDisplayInfo.Width / 4,
-			HeightRequest = DeviceDisplay.MainDisplayInfo.Height / 4,
-			CornerRadius = 100,
-			HorizontalOptions = LayoutOptions.Center,
-			VerticalOptions = LayoutOptions.Center,
+    private bool _isOn = false;
 
-		};
-
-        TapGestureRecognizer tapGesture = new TapGestureRecognizer();
-        tapGesture.Tapped += Klik_punane_ringi_peal;
-        boxView.GestureRecognizers.Add(tapGesture);
-
-        vsl = new VerticalStackLayout
-        {
-            Children = { infoLabel, boxView },
-            HorizontalOptions = LayoutOptions.Center,
-            VerticalOptions = LayoutOptions.Center
-        };
-        Content = vsl;
-    }
-    bool on_off = true;
-    private void Klik_punane_ringi_peal(object? sender, TappedEventArgs e)
+    public ValgusfoorPage()
     {
-        if (on_off)
-        {
-            infoLabel.Text = "Seis!";
-            boxView.Color = Colors.Gray;
-        }
-        else
-        {
-            infoLabel.Text = "punane";
-            boxView.Color = Colors.Red;
-        }
-        on_off = !on_off;
+        InitializeComponent();
+    }
+
+    private void OnTurnOnClicked(object sender, EventArgs e)
+    {
+        _isOn = true;
+        RedLight.BackgroundColor = Colors.Red;
+        YellowLight.BackgroundColor = Colors.Yellow;
+        GreenLight.BackgroundColor = Colors.Green;
+        TitleLabel.Text = "Vali valgus";
+    }
+
+    private void OnTurnOffClicked(object sender, EventArgs e)
+    {
+        _isOn = false;
+        RedLight.BackgroundColor = Colors.Gray;
+        YellowLight.BackgroundColor = Colors.Gray;
+        GreenLight.BackgroundColor = Colors.Gray;
+        TitleLabel.Text = "Lülita esmalt foor sisse";
+    }
+
+    private void OnRedTapped(object sender, EventArgs e)
+    {
+        if (_isOn)
+            TitleLabel.Text = "Seisa";
+    }
+
+    private void OnYellowTapped(object sender, EventArgs e)
+    {
+        if (_isOn)
+            TitleLabel.Text = "Valmista";
+    }
+
+    private void OnGreenTapped(object sender, EventArgs e)
+    {
+        if (_isOn)
+            TitleLabel.Text = "Sõida";
     }
 }
