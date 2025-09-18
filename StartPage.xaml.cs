@@ -2,8 +2,8 @@ namespace _1projekt;
 
 public partial class StartPage : ContentPage
 {
-	public List<ContentPage> lehed = new List<ContentPage>() { new TekstPage(), new FigurePage(), new TimerPage(), new ValgusfoorPage()};
-    public List<string> tekstid= new List<string>() { "Tee lahti leht Tekst'ga", "Tee lahti Figure leht", "Käivita timer page", "Käivita valgusfoor page"};
+	public List<ContentPage> lehed = new List<ContentPage>() { new TekstPage(), new FigurePage(), new TimerPage(), new ValgusfoorPage(), new DateTimePage(), new SnowmanPage() };
+	public List<string> tekstid = new List<string>() { "Tee lahti leht Tekst'ga", "Tee lahti Figure leht", "Käivita timer page", "Käivita valgusfoor page", "Tee lahti DateTime leht", "Tee lahti Lumememm leht" };
 	ScrollView sv;
 	VerticalStackLayout vsl;
 	public StartPage()
