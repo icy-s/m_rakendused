@@ -109,7 +109,7 @@ public partial class PuslePage : ContentPage
 		{
 			Command = new Command(() =>
 			{
-				selectedPiece = img;
+				//selectedPiece = img;
 				img.Opacity = 0.5;
 			})
 		});
